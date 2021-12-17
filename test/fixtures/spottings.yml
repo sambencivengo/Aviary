@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notes: MyString
+  user: one
+  bird: one
+  image: MyString
+  lat: 1.5
+  long: 1.5
+
+two:
+  notes: MyString
+  user: two
+  bird: two
+  image: MyString
+  lat: 1.5
+  long: 1.5
