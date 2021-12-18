@@ -6,7 +6,8 @@ skip_before_action :authorize, only: [:index, :create, :destroy]
   end
 
   def user_spottings
-    my_birds = current_user.spottings
+    my_birds = current_user.spottings 
+    # serializer so it's cleaner
     render json: my_birds
   end
 
