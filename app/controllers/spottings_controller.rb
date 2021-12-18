@@ -5,6 +5,10 @@ skip_before_action :authorize, only: [:index, :create, :destroy]
     render json: spottings
   end
 
+  def user_spottings
+    my_birds = current_user.spottings
+    render json: my_birds
+  end
 
   def create
     spotting = Spotting.create(spotting_params)
