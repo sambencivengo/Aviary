@@ -19,8 +19,10 @@ skip_before_action :authorize, only: [:index, :create, :destroy]
   def destroy
     spotting = Spotting.find(params[:id])
     spotting.destroy
-    render json: "Deleted Spotting"
+    spottings = current_user.spottings
+    render json: spottings
   end
+
   private
 
   def spotting_params
