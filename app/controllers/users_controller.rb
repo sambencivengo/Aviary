@@ -20,9 +20,13 @@ class UsersController < ApplicationController
     end 
   end
 
+  def users_feed
+    users = User.all.select{ |user| user.id != current_user.id }
+    render json: users
+  end
+
 
   def show
-
     render json: current_user
   end
 
