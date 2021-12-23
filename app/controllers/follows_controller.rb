@@ -3,9 +3,22 @@ class FollowsController < ApplicationController
 
   def create
     follow = Follow.create(follow_params)
-    render json: follow, status: :created
+    users = User.all.select{ |user| user.id != current_user.id }
+    feed_users = users - current_user.followings
+    render json: feed_users, status: :created
   end
 
+  def index
+    follows = Follow.all
+    render json: follows
+  end
+
+
+  def destroy
+    follow = Follow.find_by(id: params[:id])
+    follow.destroy
+    render json: {}
+  end
   private
 
 

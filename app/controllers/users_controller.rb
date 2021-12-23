@@ -22,7 +22,9 @@ class UsersController < ApplicationController
 
   def users_feed
     users = User.all.select{ |user| user.id != current_user.id }
-    render json: users
+    feed_users = users - current_user.followings
+
+    render json: feed_users
   end
 
 
