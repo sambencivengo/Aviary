@@ -27,6 +27,11 @@ class UsersController < ApplicationController
     render json: feed_users
   end
 
+  def followed_feed
+    followed_users = current_user.followings
+    render json: followed_users
+  end
+
 
   def show
     render json: current_user
