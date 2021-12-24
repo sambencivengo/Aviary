@@ -15,8 +15,10 @@ class FollowsController < ApplicationController
 
 
   def destroy
-    follow = Follow.find_by(id: params[:id])
-    follow.destroy
+    byebug
+    # find follow where current_user.id & followed user are the parameters. pass in that follow's ID to delete
+    follow = Follow.find_by(follower_id: params)
+    # follow.destroypara
     render json: {}
   end
   private
