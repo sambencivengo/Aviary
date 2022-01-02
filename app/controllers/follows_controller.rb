@@ -15,7 +15,7 @@ class FollowsController < ApplicationController
 
   def current_user_follows
     follows = current_user.given_follows
-    render json: follows
+    render json: follows 
   end
 
   def destroy

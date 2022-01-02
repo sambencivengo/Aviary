@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     render json: users
   end
 
+
+
   def create 
     user = User.create(user_params)
     if user.valid?
@@ -33,8 +35,12 @@ class UsersController < ApplicationController
     render json: followed_users
   end
 
-
   def show
+    user = User.all.find_by(id: params[:id])
+    render json: user
+  end
+
+  def show_current_user
     render json: current_user
   end
 
