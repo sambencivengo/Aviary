@@ -9,7 +9,7 @@ def user_obj
   user_obj
 end
 
-  has_one :follower
+has_one :follower
   
   # The user being followed
 

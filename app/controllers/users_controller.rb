@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
   def show
     user = User.all.find_by(id: params[:id])
+    user_obj = {user: user, spottings: user.spottings}
     render json: user
   end
 
