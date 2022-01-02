@@ -1,10 +1,12 @@
 class FollowSerializer < ActiveModel::Serializer
-  attributes :id, :followed_user
+  attributes :id, :user_obj
 
 
-def followed_user
+def user_obj
   user_id = self.object.followed_user_id
   user = User.all.find(user_id)
+  user_obj = {followed_user: user, spottings: user.spottings}
+  user_obj
 end
 
   has_one :follower
