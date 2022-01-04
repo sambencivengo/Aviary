@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:create, :index, :show]
+  skip_before_action :authorize, only: [:create, :index, :show, :update]
 
   # def create
   #   user = User.create!(user_params)
@@ -21,6 +21,17 @@ class UsersController < ApplicationController
         render json: { errors: user.errors.full_messages }, status: :unprocessable_entity 
     end 
   end
+
+  def update
+    user = User.find_by(id: params[:id])
+    if user
+    user.update(user_params)
+    render json: user
+    else
+      render json: { error: "user not found"}, status: :not_found
+    end
+  end
+
 
   def users_feed
     users = User.all.select{ |user| user.id != current_user.id }
@@ -49,7 +60,7 @@ class UsersController < ApplicationController
   private 
 
   def user_params
-    params.permit(:username, :email, :password, :password_confirmation)
+    params.permit(:username, :email, :password, :password_confirmation, :lat, :lng)
   end
 
 end
