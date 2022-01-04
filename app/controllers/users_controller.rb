@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:create, :index, :show, :update]
+  skip_before_action :authorize, only: [:create, :index, :show]
 
   # def create
   #   user = User.create!(user_params)
@@ -23,13 +23,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find_by(id: params[:id])
-    if user
-    user.update(user_params)
+    user = User.find(params[:id])
+
+    user.update(location_params)
     render json: user
-    else
-      render json: { error: "user not found"}, status: :not_found
-    end
+
   end
 
 
@@ -59,8 +57,12 @@ class UsersController < ApplicationController
 
   private 
 
+  def location_params
+    params.permit(:lat, :lng)
+  end
+
   def user_params
-    params.permit(:username, :email, :password, :password_confirmation, :lat, :lng)
+    params.permit(:username, :email, :password, :password_confirmation, :lat, :lng, :id)
   end
 
 end
