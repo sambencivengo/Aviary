@@ -1316,7 +1316,7 @@ while num < 1173 do
   page = mechanize.get(URL + us_birds[num])
   common_name = page.search('h1.Playlist-heading').text
   sci_name = page.search('span.Heading-sub.Heading-sub--sci.Heading-sub--custom.u-text-4-loose').text
-  desc = page.search('p.u-stack-sm').text
+  desc = page.search('p.u-stack-sm').text.gsub(/Learn more about .* from…/, "")
   attr = page.search('div.MediaFeedItem-user').text
   if page.search('div.MediaFeedItem-attribution').children[0] != nil
     # puts page.search('div.MediaFeedItem-attribution')
@@ -1330,7 +1330,7 @@ while num < 1173 do
   image = page.images[0]
   # puts common_name
   # puts sci_name
-  puts image
+  # puts image
   # puts desc
   # puts attr
   # puts ebird_attr_URL
