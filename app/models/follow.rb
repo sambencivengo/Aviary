@@ -4,4 +4,6 @@ class Follow < ApplicationRecord
 
   # The user being followed
   belongs_to :followed_user, foreign_key: :followed_user_id, class_name: "User"
+
+
 end

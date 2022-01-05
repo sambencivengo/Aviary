@@ -13,7 +13,11 @@ skip_before_action :authorize, only: [:index, :create, :destroy]
 
   def create
     spotting = Spotting.create(spotting_params)
-    render json: spotting, status: :created
+    if spotting.valid? 
+      render json: spotting, status: :created
+    else
+      render json: { errors: spotting.errors.full_messages }, status: :unprocessable_entity 
+    end
   end
 
   def destroy
