@@ -26,7 +26,7 @@ skip_before_action :authorize, only: [:index, :create, :destroy]
   private
 
   def spotting_params
-    params.permit(:notes, :user_id, :bird_id, :image, :lat, :long)
+    params.permit(:notes, :user_id, :bird_id, :image, :date, :lat, :long)
     # .require(:spotting).
   end
 
