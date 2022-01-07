@@ -1328,14 +1328,14 @@ while num < 1173 do
   end 
   puts "seeding bird #{num}"
   image = page.images[0]
-  # puts common_name
-  # puts sci_name
-  # puts image
-  # puts desc
-  # puts attr
+  puts common_name
+  puts sci_name
+  puts image
+  puts desc
+  puts attr
   # puts ebird_attr_URL
   num = num + 1
-  Bird.create(common_name: common_name, sci_name: sci_name, image: image, description: desc, attribution: attr, ebird: ebird_attr_URL )
+  # Bird.create(common_name: common_name, sci_name: sci_name, image: image, description: desc, attribution: attr, ebird: ebird_attr_URL )
 end
 
 
