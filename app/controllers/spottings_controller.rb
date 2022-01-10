@@ -8,7 +8,8 @@ skip_before_action :authorize, only: [:index, :create, :destroy]
   def user_spottings
     my_birds = current_user.spottings 
     # serializer so it's cleaner
-    render json: my_birds
+    sorted_birds = my_birds.order('date DESC')
+    render json: sorted_birds
   end
 
   def create
