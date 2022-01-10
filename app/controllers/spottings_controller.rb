@@ -1,7 +1,8 @@
 class SpottingsController < ApplicationController
 skip_before_action :authorize, only: [:index, :create, :destroy]
   def index
-    spottings = Spotting.all 
+    spottings = Spotting.all.order('date DESC') 
+    
     render json: spottings
   end
 
