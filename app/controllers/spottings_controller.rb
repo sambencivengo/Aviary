@@ -3,7 +3,7 @@ skip_before_action :authorize, only: [:index, :create, :destroy]
   def index
     spottings = Spotting.all.order('date DESC') 
     
-    render json: spottings
+    render json: spottings.
   end
 
   def user_spottings
