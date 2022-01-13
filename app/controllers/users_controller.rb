@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     user = User.all.find_by(id: params[:id])
     spottings = user.spottings
     # sorted_spottings = spottings.order('date DESC')
-    user_obj = {user: user, spottings: spottings}
+    # user_obj = {user: user, spottings: spottings}
     render json: user
   end
 
