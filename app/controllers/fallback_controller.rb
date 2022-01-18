@@ -1,4 +1,4 @@
-class FallbackController < ApplicationController
+class FallbackController < ApplicationController::Base
   skip_before_action :authorize
 
   # def index
