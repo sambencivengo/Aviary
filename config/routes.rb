@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "/followed", to: "users#followed_feed"
   get "/followings", to: "follows#current_user_follows"
 
+  get "/favicon.ico", to: "fallback#favicon"
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
     

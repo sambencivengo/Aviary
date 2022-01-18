@@ -22,6 +22,7 @@ const UserProvider = ({ children }) => {
 						console.log(user);
 						setCurrentUser(user);
 						setLoggedIn(true);
+						navigate('/home');
 					} else {
 						setLoggedIn(false);
 					}
@@ -48,10 +49,10 @@ const UserProvider = ({ children }) => {
 				console.log(user);
 				if (user) {
 					setCurrentUser(user);
+					navigate('/home');
 				} else {
 					console.log(user);
 					errorMessage(user);
-					// navigate('/home');
 				}
 			})
 			.catch((error) => console.log(error));

@@ -7,4 +7,8 @@ class FallbackController < ActionController::Base
   def index
     render file: 'public/index.html'
   end
+
+  def favicon
+    render file: 'public/favicon.ico'
+  end
 end

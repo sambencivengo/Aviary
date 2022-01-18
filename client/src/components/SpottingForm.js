@@ -284,11 +284,7 @@ const SpottingForm = () => {
 						</div>{' '}
 					</Col>
 				</Row>
-				<Content style={{ margin: '0 16px' }}>
-					{/* <Wrapper googleMapsApiKey={process.env.REACT_APP_API_KEY}>
-				<Map />
-			</Wrapper> */}
-				</Content>
+				<Content style={{ margin: '0 16px' }}></Content>
 			</Layout>
 		</>
 	);
