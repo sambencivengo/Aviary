@@ -43,7 +43,7 @@ const SpottingsContainer = () => {
 	const [enableCardClick, setEnableCardClick] = useState(false);
 	const { Title } = Typography;
 	const { RangePicker } = DatePicker;
-
+	//testing
 	useEffect(() => {
 		fetch('/mybirds')
 			.then((r) => r.json())
