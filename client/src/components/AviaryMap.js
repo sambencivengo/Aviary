@@ -85,7 +85,6 @@ const AviaryMap = ({
 		}
 	}, []);
 
-	console.log(process.env.REACT_APP_API_KEY);
 	return (
 		<div className="map">
 			<div className="map">
