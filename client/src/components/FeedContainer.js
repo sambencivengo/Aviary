@@ -45,7 +45,7 @@ const FeedContainer = () => {
 	};
 
 	useEffect(() => {
-		fetch('/feed')
+		fetch('/usersfeed')
 			.then((r) => r.json())
 			.then((users) => {
 				setUsers(users);
@@ -65,7 +65,7 @@ const FeedContainer = () => {
 	}, []);
 
 	const stateReset = () => {
-		fetch('/feed')
+		fetch('/usersfeed')
 			.then((r) => r.json())
 			.then((users) => {
 				setUsers(users);

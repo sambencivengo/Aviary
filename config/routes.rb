@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/mybirds", to: "spottings#user_spottings"
-  get "/feed", to: "users#users_feed"
+  get "/usersfeed", to: "users#users_feed"
   get "/followed", to: "users#followed_feed"
   get "/followings", to: "follows#current_user_follows"
 
