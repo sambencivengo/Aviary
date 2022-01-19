@@ -44,24 +44,7 @@ const SpottingsContainer = () => {
 	const { Title } = Typography;
 	const { RangePicker } = DatePicker;
 
-	const navigate = useNavigate();
-	const location = useLocation();
 	useEffect(() => {
-		// fetch('/me').then((r) =>
-		// 	r
-		// 		.json()
-		// 		.then((user) => {
-		// 			if (user.username !== undefined && location('/myaviary')) {
-		// 				navigate('/home');
-		// 			} else {
-		// 				navigate('/login');
-		// 			}
-		// 		})
-		// 		.catch((error) => {
-		// 			navigate('/login');
-		// 			console.log(error);
-		// 		})
-		// );
 		fetch('/mybirds')
 			.then((r) => r.json())
 			.then((data) => {
@@ -69,7 +52,6 @@ const SpottingsContainer = () => {
 			});
 	}, []);
 
-	const { currentUser } = useContext(UserContext);
 	const handleDelete = (bird) => {
 		fetch(`/spottings/${bird.id}`, { method: 'DELETE' })
 			.then((r) => r.json())
@@ -97,7 +79,6 @@ const SpottingsContainer = () => {
 		if (editMode === true) {
 			setSelectedSpotting(null);
 		} else {
-			console.log(spotting);
 			setSelectedSpotting(spotting);
 		}
 		if (showMap === false) {
@@ -107,9 +88,7 @@ const SpottingsContainer = () => {
 
 	const [startDate, setStartDate] = useState();
 	const [endDate, setEndDate] = useState();
-	console.log(startDate, endDate);
 
-	console.log(spottings);
 	const [range, setRange] = useState();
 
 	const filteredSpottings = spottings.filter((spotting) => {
@@ -119,7 +98,6 @@ const SpottingsContainer = () => {
 		}
 		return spotting;
 	});
-	console.log(filteredSpottings);
 	const renderCards = filteredSpottings.map((spotting) => {
 		return (
 			<>
@@ -139,12 +117,9 @@ const SpottingsContainer = () => {
 			</>
 		);
 	});
-	console.log(range);
 
 	const [top, setTop] = useState(10);
 	const [bottom, setBottom] = useState(10);
-
-	console.log(startDate, endDate);
 
 	function disabledDate(current) {
 		return current && current > moment().endOf('day');

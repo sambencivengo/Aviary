@@ -25,35 +25,7 @@ const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
 function App() {
-	const location = useLocation();
-
-	const navigate = useNavigate();
-
-	const { logout, currentUser } = useContext(UserContext);
-
-	useEffect(() => {
-		fetch('/me').then((r) =>
-			r
-				.json()
-				.then((user) => {
-					// if (location.pathname === '/') {
-					// 	console.log('empty pathname');
-					// 	navigate('/home');
-					// }
-					if (user.username && location.pathname === '/') {
-						navigate('/home');
-					} else if (user.username) {
-						navigate(location);
-					} else {
-						navigate('/login');
-					}
-				})
-				.catch((error) => {
-					navigate('/login');
-					console.log(error);
-				})
-		);
-	}, []);
+	const { logout } = useContext(UserContext);
 
 	const { Title } = Typography;
 

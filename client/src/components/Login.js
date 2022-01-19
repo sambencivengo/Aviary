@@ -17,32 +17,12 @@ import Title from 'antd/lib/typography/Title';
 const Login = () => {
 	const { Link } = Typography;
 	const navigate = useNavigate();
-	const { loggedIn } = useContext(UserContext);
 	const { login } = useContext(UserContext);
 
 	const [formData, setFormData] = useState({
 		username: '',
 		password: '',
 	});
-	const { currentUser } = useContext(UserContext);
-
-	// function fetchMeAndRedirect() {
-	// 	fetch('/me').then((r) =>
-	// 		r.json().then((user) => {
-	// 			// if (location.pathname === '/') {
-	// 			// 	console.log('empty pathname');
-	// 			// 	navigate('/home');
-	// 			// }
-	// 			if (user.username !== undefined) {
-	// 				navigate('/home');
-	// 			}
-	// 		})
-	// 	);
-	// }
-
-	// useEffect(() => {
-	// 	fetchMeAndRedirect();
-	// }, []);
 
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });

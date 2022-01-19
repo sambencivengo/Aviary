@@ -1,16 +1,16 @@
 import { message } from 'antd';
 import { createContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const UserContext = createContext({
 	logout: () => {},
 	login: () => {},
 	currentUser: null,
-	loggedIn: false,
 });
 
 const UserProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState(null);
+	const location = useLocation();
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -18,23 +18,17 @@ const UserProvider = ({ children }) => {
 			r
 				.json()
 				.then((user) => {
-					if (user) {
-						console.log(user);
+					if (user.username) {
 						setCurrentUser(user);
-						setLoggedIn(true);
-						navigate('/home');
 					} else {
-						setLoggedIn(false);
+						throw new Error('not logged in');
 					}
 				})
 				.catch((error) => {
 					navigate('/login');
-					console.log(error);
 				})
 		);
 	}, []);
-
-	const [loggedIn, setLoggedIn] = useState(false);
 
 	const login = (formData) => {
 		fetch('/login', {
